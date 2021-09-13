@@ -37,6 +37,7 @@
 
 
   <!-- Launch RViz -->
-  <node name="rviz" pkg="rviz" type="rviz" respawn="false" />
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false"
+	args="-d $(find my_robot)/rviz/whereami_config.rviz" />
 
 </launch>
