@@ -49,3 +49,11 @@ Now RViz shows the robot in a localization map with a cluster of particles surro
 ![world_rviz](</workspace/images/launch_amcl.png>)
 
 Also to note is the localization map in RViz. That map was created using the 'pgm_map_creator' package. This package is not part of the nodes launched. It was used in an off-line mode to create a localization map from the simulation environment as input. The map was edited to include only wall objects, i.e. the fountain, hydrant and circular columns were removed.
+
+Two methods of driving the robot are implemented. The move_base node allows a target location or destination to be indicated on the localization map. That method is already up and running after the second roslaunch command. The other method uses the teletop_twist_keyboard node. This node accepts key hits in the console. Those are tanslated into motion commands such as forward and backward motion, pure rotation, combined linear and rotational motion, etc. That node is launched with the command (in a separate console),
+
+> rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
+
+The image below shows the console where teleop has been started and instrutions how to command the robot into motion.
+
+![world_rviz](</workspace/images/rosrun_teleop.png>)
