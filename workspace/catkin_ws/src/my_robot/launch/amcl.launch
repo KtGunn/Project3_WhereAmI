@@ -8,19 +8,22 @@
   <node name="amcl" pkg="amcl" type="amcl" output="screen" >
     <remap from="scan" to="my_robot/laser/scan" />
     
-    
-    <!-- [ktg] must adjust transform tolerance (def 0.1sec) -->
+    <!-- transform tolerance (def 0.1sec) -->
     <param name="transform_tolerance" value="0.1" />
 
     <param name="odom_frame_id" value="odom" />
     <param name="odom_model_type" value="diff-corrected" />
+
+    <param name="base_frame_id" value="robot_footprint" />
+    <param name="global_frame_id" value="map" />
+
     <param name="odom_alpha1" value="0.2" />
     <param name="odom_alpha2" value="0.2" />
     <param name="odom_alpha3" value="0.2" />
     <param name="odom_alpha4" value="0.2" />
     <param name="odom_alpha5" value="0.2" />
 
-    <!-- [ktg] 'likelihood_field' is default, but good idea to be explicit -->
+    <!-- 'likelihood_field' is default, but good idea to be explicit -->
     <param name="laser_model_type" value="likelihood_field" />
     <param name="laser_min_range" value="-1.0" />
     <param name="laser_max_range" value="-1.0" />
@@ -28,14 +31,19 @@
     <param name="laser_z_hit" value="0.95" />
     <param name="laser_z_rand" value="0.05" />
 
-    <param name="base_frame_id" value="robot_footprint" />
-    <param name="global_frame_id" value="map" />
-    
-    <!-- [ktg] Per instruction these should be set to 0,0 -->
-    <param name="initial_pose_x" value="-6.3" />
-    <param name="initial_pose_y" value="-4.6" />
+    <!-- Per instructions set to 0,0 @ PI, actual (-6.3, -4.6) @ 0 -->
+    <param name="initial_pose_x" value="0" />
+    <param name="initial_pose_y" value="0" />
+    <param name="initial_pose_a" value="3.14" />
+
+    <param name="initial_cov_xx" value="25" />
+    <param name="initial_cov_yy" value="25" />
+    <param name="initial_cov_aa" value="0.5" />
+
+
+    <!-- intial value was '5000' ; way too large ; bogged CPU down -->
+    <param name="max_particles" value="2000" />
     <param name="min_particles" value="100" />
-    <param name="max_particles" value="5000" />
     <param name="update_min_d" value="0.2" />
     <param name="update_min_a" value="0.523" />
 
