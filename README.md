@@ -57,3 +57,15 @@ Two methods of driving the robot are implemented. The move_base node allows a ta
 The image below shows the console where teleop has been started and instrutions how to command the robot into motion.
 
 ![world_rviz](</workspace/images/rosrun_teleop.png>)
+
+## Localization
+
+Tests of the localization method were conducted to discover its characteristics and performance. Of primary concern is ability to locazlize a robot from a highly uncertain location, i.e. with great uncertainty the robot's position coordinates and heading or pose. There are numerous parameters that affect the AMCL packages performance The screen shot below shows the ones that were of interest in the present case.
+
+![world_rviz](</workspace/images/amcl_params.png>)
+
+### Initial Conditions
+
+First test is to give AMCL no information about the robot's position including a heading 180 degrees from actual and test how quickly the algorithm converges to a solution.
+
+![world_rviz](</workspace/images/unknown_pose.gif>)
