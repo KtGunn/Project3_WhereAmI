@@ -2,7 +2,7 @@
 
 <launch>
 
-  <!-- Default robot pose  -->
+  <!-- Default robot pose -6.3 -4.6 0 -->
   <arg name="x" default="-6.3" />
   <arg name="y" default="-4.6" />
   <arg name="z" default="0" />
