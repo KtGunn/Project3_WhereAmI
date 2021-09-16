@@ -28,13 +28,20 @@
     <param name="laser_min_range" value="-1.0" />
     <param name="laser_max_range" value="-1.0" />
     <param name="laser_max_beams" value="30" />
+
+    <!-- was 0.95, 0.05 -->
     <param name="laser_z_hit" value="0.95" />
     <param name="laser_z_rand" value="0.05" />
+
+    <param name="recovery_alpha_slow" value="0.000" />
+    <param name="recovery_alpha_fast" value="0.000" />
 
     <!-- Per instructions set to 0,0 @ PI, actual (-6.3, -4.6) @ 0 -->
     <param name="initial_pose_x" value="0" />
     <param name="initial_pose_y" value="0" />
-    <param name="initial_pose_a" value="3.14" />
+    <!-- initial value of PI out of phase is too large! -->
+    <!-- initial value of PI/2=1.507 works ok -->
+    <param name="initial_pose_a" value="1" />
 
     <param name="initial_cov_xx" value="25" />
     <param name="initial_cov_yy" value="25" />
