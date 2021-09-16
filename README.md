@@ -60,12 +60,15 @@ The image below shows the console where teleop has been started and instrutions 
 
 ## Localization
 
-Tests of the localization method were conducted to discover its characteristics and performance. Of primary concern is ability to locazlize a robot from a highly uncertain location, i.e. with great uncertainty the robot's position coordinates and heading or pose. There are numerous parameters that affect the AMCL packages performance The screen shot below shows the ones that were of interest in the present case.
+Tests of the AMCL localization method were conducted to discover its characteristics and performance. Of primary importance is ability to locazlize a robot from a highly uncertain location, i.e. with great uncertainty in the robot's position coordinates and heading, i.e. pose.
+
+There are numerous parameters that affect the AMCL packages performance The screen shot below shows the ones that were of interest in the present case. These can be adjusted and their effect observed.
 
 ![world_rviz](</workspace/images/amcl_params.png>)
 
+
 ### Initial Conditions
 
-First test is to give AMCL no information about the robot's position including a heading 180 degrees from actual and test how quickly the algorithm converges to a solution.
+First test is to run AMCL with an unknown position and observe how it converges to the solution, right solution hopefully, or if it converges at all. We arbritrarily initialize the position to the origin and give the tug 1radian in heading error. A large initial covariance sets the position as unknwon. Particles will be spread over the map randomly which is what we wish to see. The gif below shows how the AMCL method converges, slowly.
 
-![world_rviz](</workspace/images/unknown_pose.gif>)
+![world_rviz](</workspace/images/Initial_45.gif>)
