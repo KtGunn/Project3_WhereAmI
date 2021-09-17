@@ -81,23 +81,23 @@ The convergence characteristics of the AMCL algorithm are on good display. The r
 
 To evaluate effects of parameter variations, a fixed point on the robot's path is chosen. When the robot reaches that point, a snap shot of the state of convergence is taken. Comparison of snap shots can reveal the effect the parameter has. Below is the snap shot for the initial test, the baseline.
 
-![world_rviz](</workspace/images/Baseline.gif>)
+![world_rviz](</workspace/images/Baseline.png>)
 
 ### Max Laser Beams
 
 First up is 'laser_max_beams' intially at 30 but now set to 100. Better convergence especially after the single cluster formation can be expected. A comparison is made between the baseline and each test is done by looking at convergence at a fixed location on the robot's path.
 
-![world_rviz](</workspace/images/30-100beams.gif>)
+![world_rviz](</workspace/images/30-100beams.png>)
 
 
 ### Laser Z Hit & Rand
 
-![world_rviz](</workspace/images/laser_hit_50-50.gif>)
+![world_rviz](</workspace/images/laser_hit_50-50.png>)
 
 ### Minimum Distance
 
-![world_rviz](</workspace/images/min_d_0.75.gif>)
+![world_rviz](</workspace/images/min_d_0.75.png>)
 
 ### Odom Alphas
 
-![world_rviz](</workspace/images/odom_alphas.gif>)
+![world_rviz](</workspace/images/odom_alphas.png>)
