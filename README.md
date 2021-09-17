@@ -79,25 +79,38 @@ The gif below shows how the AMCL method converges, slowly. One parameter that wa
 
 The convergence characteristics of the AMCL algorithm are on good display. The robot is running between parallel walls. The environment has a few locations where walls are parallel and particles cluster in those locations. This is the multi-modal feature of particle filters in contrast with EKF which is uni-modal (one solution). Eventually clusters where the map indicates presence of walls, but the lidar senses none, drop out and one cluster dominates. Once that point is reached, it is still interesting how slowly the algorithm converges to an exact solution.
 
-To evaluate effects of parameter variations, a fixed point on the robot's path is chosen. When the robot reaches that point, a snap shot of the state of convergence is taken. Comparison of snap shots can reveal the effect the parameter has. Below is the snap shot for the initial test, the baseline.
+To evaluate effects of parameter variations, a fixed point on the robot's path is chosen. When the robot reaches that point, a snap shot of the state of convergence is taken. Comparison of snap shots can reveal the effect of the parameter. Below is the snap shot for the initial test, the baseline.
 
 ![world_rviz](</workspace/images/Baseline.png>)
 
 ### Max Laser Beams
 
-First up is 'laser_max_beams' intially at 30 but now set to 100. Better convergence especially after the single cluster formation can be expected. A comparison is made between the baseline and each test is done by looking at convergence at a fixed location on the robot's path.
+First up is 'laser_max_beams' intially at 30 but now set to 100. Better convergence especially after the single cluster formation is expected.
 
 ![world_rviz](</workspace/images/30-100beams.png>)
 
+There is not a pronounced effect but it is in the direction expected; faster clustering to a single solution. It also appears that unlikely solutions disappear faster.
 
 ### Laser Z Hit & Rand
 
+This test uses the likelihood_field model of a laser. Two parameters, laser_z_hit and laser_z_rand, which add up to one, dial in the mixture between believing laser readings are from the mapped walls versus from random objects. Environments with many random un-mapped objects should bump up laser_z_rand and lower laser_z_hit. Default for this test as laser_z_hit of 0.95 and 0.05 for laser_z_rand. Below is a test where both parameters were set even at 0.5.
+
 ![world_rviz](</workspace/images/laser_hit_50-50.png>)
+
+This looks worse than baseline and appears to hold onto solutions that are wrong. There likely are important tuning parameters in an actual application.
 
 ### Minimum Distance
 
+A balance must be struck between rate of localization updates and conserving computing power for other operations. The update_min_d and update_min_a parameters set the distance and amount of rotation required to trigger a localization. Baseline uses 0.2m and PI/6. We kick the update_min_d up a notch to 0.75 and results are shown in the snap shot below.
+
 ![world_rviz](</workspace/images/min_d_0.75.png>)
+
+This looks horrible and confirms that at least for unknown initial position, filter updates must be frequent lset the robot run out of open space before localizing. These look to be important tuning parameters.
 
 ### Odom Alphas
 
-![world_rviz](</workspace/images/odom_alphas.png>)
+Just as testing the filter with widely scatteres particles at start, it is useful to know what parameters lump the particles close in to the robot's position when the filter has converged to a solution. We look to the omod_alpha paramers for that purpose. There are five odometry noise parameters, all set initially at 0.2. Below is a test with all five set to an order of magnitude lower than baseline or 0.02.
+
+![world_rviz](</workspace/images/odom_alphas_02.png>)
+
+As expected, the particles appear to tuck in closely to the robot as it localizes accurately.
