@@ -17,6 +17,7 @@
     <param name="base_frame_id" value="robot_footprint" />
     <param name="global_frame_id" value="map" />
 
+    <!-- Defaulted to '0.2'  -->
     <param name="odom_alpha1" value="0.2" />
     <param name="odom_alpha2" value="0.2" />
     <param name="odom_alpha3" value="0.2" />
@@ -27,6 +28,7 @@
     <param name="laser_model_type" value="likelihood_field" />
     <param name="laser_min_range" value="-1.0" />
     <param name="laser_max_range" value="-1.0" />
+    <!-- 'beams' 30 by default; 1st parameter we play with -->
     <param name="laser_max_beams" value="30" />
 
     <!-- was 0.95, 0.05 -->
@@ -37,20 +39,22 @@
     <param name="recovery_alpha_fast" value="0.000" />
 
     <!-- Per instructions set to 0,0 @ PI, actual (-6.3, -4.6) @ 0 -->
-    <param name="initial_pose_x" value="0" />
-    <param name="initial_pose_y" value="0" />
+    <param name="initial_pose_x" value="-6.3" />
+    <param name="initial_pose_y" value="-4.6" />
     <!-- initial value of PI out of phase is too large! -->
     <!-- initial value of PI/2=1.507 works ok -->
-    <param name="initial_pose_a" value="1" />
+    <param name="initial_pose_a" value="0.0" />
 
-    <param name="initial_cov_xx" value="25" />
-    <param name="initial_cov_yy" value="25" />
-    <param name="initial_cov_aa" value="0.5" />
+    <param name="initial_cov_xx" value="0.5" />
+    <param name="initial_cov_yy" value="0.5" />
+    <param name="initial_cov_aa" value="0.025" />
 
 
     <!-- intial value was '5000' ; way too large ; bogged CPU down -->
     <param name="max_particles" value="2000" />
     <param name="min_particles" value="100" />
+
+    <!-- intial values '0.2, 0.523' -->
     <param name="update_min_d" value="0.2" />
     <param name="update_min_a" value="0.523" />
 
