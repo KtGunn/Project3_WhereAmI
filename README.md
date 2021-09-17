@@ -66,9 +66,38 @@ There are numerous parameters that affect the AMCL packages performance The scre
 
 ![world_rviz](</workspace/images/amcl_params.png>)
 
+A few tests were done altering these parameters mostly just to see their gross effect as opposed to fine tuning the algorithm. First a base line was established. This used default AMCL parameters. There after parameters were modified and the same simulation run. A fixed location was selected as a point at which to compare the different runs.
 
-### Initial Conditions
 
-First test is to run AMCL with an unknown position and observe how it converges to the solution, right solution hopefully, or if it converges at all. We arbritrarily initialize the position to the origin and give the tug 1radian in heading error. A large initial covariance sets the position as unknwon. Particles will be spread over the map randomly which is what we wish to see. The gif below shows how the AMCL method converges, slowly.
+### Baseline Simluation
+
+First test is to run AMCL with an unknown position and observe how it converges to the solution, right solution hopefully, or if it converges at all. We arbritrarily initialize the position to the origin and give the tug 1radian in heading error. A large initial covariance sets the position as unknwon. Particles will be spread over the map randomly which is what we wish to see.
+
+The gif below shows how the AMCL method converges, slowly. One parameter that was modified immediately was the maximum number of particles, originally 5,000 set to 2,000. Five thousand particles bogged down the system this project was developed on.
 
 ![world_rviz](</workspace/images/Initial_45.gif>)
+
+The convergence characteristics of the AMCL algorithm are on good display. The robot is running between parallel walls. The environment has a few locations where walls are parallel and particles cluster in those locations. This is the multi-modal feature of particle filters in contrast with EKF which is uni-modal (one solution). Eventually clusters where the map indicates presence of walls, but the lidar senses none, drop out and one cluster dominates. Once that point is reached, it is still interesting how slowly the algorithm converges to an exact solution.
+
+To evaluate effects of parameter variations, a fixed point on the robot's path is chosen. When the robot reaches that point, a snap shot of the state of convergence is taken. Comparison of snap shots can reveal the effect the parameter has. Below is the snap shot for the initial test, the baseline.
+
+![world_rviz](</workspace/images/Baseline.gif>)
+
+### Max Laser Beams
+
+First up is 'laser_max_beams' intially at 30 but now set to 100. Better convergence especially after the single cluster formation can be expected. A comparison is made between the baseline and each test is done by looking at convergence at a fixed location on the robot's path.
+
+![world_rviz](</workspace/images/30-100beams.gif>)
+
+
+### Laser Z Hit & Rand
+
+![world_rviz](</workspace/images/laser_hit_50-50.gif>)
+
+### Minimum Distance
+
+![world_rviz](</workspace/images/min_d_0.75.gif>)
+
+### Odom Alphas
+
+![world_rviz](</workspace/images/odom_alphas.gif>)
