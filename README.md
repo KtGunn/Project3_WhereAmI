@@ -114,3 +114,9 @@ Just as testing the filter with widely scatteres particles at start, it is usefu
 ![world_rviz](</workspace/images/odom_alphas_02.png>)
 
 As expected, the particles appear to tuck in closely to the robot as it localizes accurately.
+
+## Move_base Example
+
+![world_rviz](</workspace/images/base_move_example.gif>)
+
+
