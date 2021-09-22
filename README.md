@@ -12,13 +12,13 @@ There are numerous criteria to be met to complete this project. The following ar
 
 The simulation is carried out in the simulation environment created earlier and used in the prior project #2 Chase It. The simulation uses the turtlebot robot. Two methods of driving the robot are implemented, a manual method using the teleop keyboard package. By pressing keys the robot is commanded to move linearly or rotate. Speed and rate can be adjusted up or down by key press also.
 
-Another method of robot activation is the move base package. This package receives navigation targets or destinations tthrough mouse clicks on the map in the RViz package. This package avoids obstacles an plan around them.
+Another method of robot activation is the move_base package. This package receives navigation targets or destinations through mouse clicks on the map in the RViz package. This package avoids obstacles and plans around them. This method is an option.
 
 # Project Results
 The following shows the results obtained for this project.
 
 ## Install & Run
-The application was developed in Linux Ubuntu version 16.04 with ROS distribution Kinetic. The application depends on a few packages that must be present: navigation, map-server, move-base and amcl. These can be installed using,
+The application was developed in Linux Ubuntu version 16.04 with ROS distribution Kinetic. The application depends on a few packages that must be present: navigation, map-server, move_base and amcl. These can be installed using,
 
 > sudo apt install ros-kinetic-<name_of_required_package>
 
@@ -117,6 +117,13 @@ As expected, the particles appear to tuck in closely to the robot as it localize
 
 ## Move_base Example
 
+In the preceding sections, the teleop keyboard method was used to move the robot and exercise the AMCL package. The alternative method of activating both the robot and AMCL package, the move_base package, was also installed. Like the AMCL package, the move_base package uses many parameters for tuning the performance of the algorithm. For completeness, a simple test of this package is included in this project.
+
+With the move_base package a destination or goal of the robot is set by clicking the mouse cursor on the map. The move_base package then creates a 'global plan' to reach the destination. As the robot moves toward the destination, it creates a 'local plan' for immediate motion commands. In absence of obstacles, the local plan closely follows the global plan. If obstacles are encountered, the local plan will command the robot around them. Refer to the gif below
+
 ![world_rviz](</workspace/images/base_move_example.gif>)
 
+The move_base package publishes on may topics which can be displayed in Rviz.  The vertical red arrow at left is the goal was set by the user. A red line is drawn from the robot’s starting position to the goal and indicates the global plan. As the robot moves toward the goal and obstacles come into view, they are rendered as light blue ovals. These ovals represent how the obstacles are ‘inflated’ and thus keep the robot at a proper stand-off. A very short white curve extending from the robot shows the immediate plan the robot follows at any instant.
+
+We see the robot fight its way to the goal and eventually get there. However the ‘tuning’ appears sub-optimal. In a well tuned application, the robot would make smoother local plans, farther away from the obstacles and not have to struggle away from static obstacles. On the other hand, this is a good example of the move_base packages capabilities. As expected, we also see that the AMCL package is active and continually updating the robot’s location.
 
