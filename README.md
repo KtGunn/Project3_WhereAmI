@@ -105,7 +105,7 @@ A balance must be struck between rate of localization updates and conserving com
 
 ![world_rviz](</workspace/images/min_d_0.75.png>)
 
-This looks horrible and confirms that at least for unknown initial position, filter updates must be frequent lset the robot run out of open space before localizing. These look to be important tuning parameters.
+This looks horrible and confirms that at least for unknown initial position, filter updates must be frequent lest the robot run out of open space before localizing. These look to be important tuning parameters.
 
 ### Odom Alphas
 
