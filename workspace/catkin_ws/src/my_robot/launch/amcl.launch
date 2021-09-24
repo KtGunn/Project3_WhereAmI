@@ -18,18 +18,19 @@
     <param name="global_frame_id" value="map" />
 
     <!-- Defaulted to '0.2'  -->
-    <param name="odom_alpha1" value="0.2" />
-    <param name="odom_alpha2" value="0.2" />
-    <param name="odom_alpha3" value="0.2" />
-    <param name="odom_alpha4" value="0.2" />
-    <param name="odom_alpha5" value="0.2" />
+    <param name="odom_alpha1" value="0.01" />
+    <param name="odom_alpha2" value="0.01" />
+    <param name="odom_alpha3" value="0.01" />
+    <param name="odom_alpha4" value="0.01" />
+    <param name="odom_alpha5" value="0.01" />
 
     <!-- 'likelihood_field' is default, but good idea to be explicit -->
     <param name="laser_model_type" value="likelihood_field" />
+    <!-- '-1.0' singnal no limits applied -->
     <param name="laser_min_range" value="-1.0" />
     <param name="laser_max_range" value="-1.0" />
     <!-- 'beams' 30 by default; 1st parameter we play with -->
-    <param name="laser_max_beams" value="30" />
+    <param name="laser_max_beams" value="100" />
 
     <!-- was 0.95, 0.05 -->
     <param name="laser_z_hit" value="0.95" />
